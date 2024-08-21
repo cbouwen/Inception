@@ -3,9 +3,9 @@ all: up
 
 
 up:
-	@mkdir -p ${home}/cbouwen/data
-	@mkdir -p ${home}/cbouwen/data/wordpress
-	@mdkir -p ${home}/cbouwen/data/mariadb
+	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data
+	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data/wordpress
+	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data/mariadb
 	@docker-compose -f srcs/docker-compose.yml up -d
 
 build:
@@ -30,7 +30,7 @@ clean:
 	@docker-compose -f srcs/docker-compose.yml down --rmi all --volumes
 
 fclean: clean
-	rm -rf ${home}/cbouwen/data
+	rm -rf /Users/cedricbouwen/Documents/Campus 19/data
 
 re: clean rebuild up
 
