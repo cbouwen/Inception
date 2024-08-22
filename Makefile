@@ -1,11 +1,9 @@
 all: up
 
-
-
 up:
-	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data
-	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data/wordpress
-	@mkdir -p /Users/cedricbouwen/Documents/Campus 19/data/mariadb
+	@mkdir -p /nfs/homes/cbouwen/Course/Github/Inception/data
+	@mkdir -p /nfs/homes/cbouwen/Course/Github/Inception/data/wordpress
+	@mkdir -p /nfs/homes/cbouwen/Course/Github/Inception/data/mariadb
 	@docker-compose -f srcs/docker-compose.yml up -d
 
 build:
@@ -30,7 +28,7 @@ clean:
 	@docker-compose -f srcs/docker-compose.yml down --rmi all --volumes
 
 fclean: clean
-	rm -rf /Users/cedricbouwen/Documents/Campus 19/data
+	rm -rf /nfs/homes/cbouwen/Course/Github/Inception/data
 
 re: clean rebuild up
 
