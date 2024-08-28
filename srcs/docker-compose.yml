@@ -34,7 +34,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - /Users/cedricbouwen/Documents/C19/Inception/data/wordpress:/var/www/html
+      - wordpress:/var/www/html
     networks:
       - inception
     env_file:
