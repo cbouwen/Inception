@@ -5,16 +5,16 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/cbouwen/data/wordpress
+      device: /Users/cedricbouwen/Documents/C19/Inception/data/wordpress
       o: bind
       type: none
-    mariadb:
-      name: mariadb
-      driver: local
-      driver_opts:
-        device: /home/cbouwen/data/mariadb
-        o: bind
-        type: none
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      device: /Users/cedricbouwen/Documents/C19/Inception/data/mariadb
+      o: bind
+      type: none
 
 networks:
   inception:
@@ -31,14 +31,14 @@ services:
     restart: always
     ports:
       - "443:443"
-    depends on:
+    depends_on:
       - wordpress
     volumes:
-      - wordpress:/var/www/html
+      - /Users/cedricbouwen/Documents/C19/Inception/data/wordpress:/var/www/html
     networks:
       - inception
     env_file:
-      - .env_file
+      - .env
 
   wordpress:
     container_name: wordpress
@@ -56,11 +56,11 @@ services:
         - NORMAL_PASS=${NORMAL_PASS}
         - NORMAL_EMAIL=${NORMAL_EMAIL}
     restart: always
-    depends on:
-      mariadb:
-        condition: service_healthy
+    depends_on:
+       - mariadb
+#        condition: service_healthy
     volumes:
-      - wordpress:/var/www/html
+      - /Users/cedricbouwen/Documents/C19/Inception/data/wordpress:/var/www/html
     networks:
       - inception
     env_file:
@@ -75,15 +75,15 @@ services:
         - ADM_USER=${ADM_USER}
         - ADM_PASS=${ADM_PASS}
         - ROOT_PASS=${MYSQL_ROOT_PASS}
-      restart: always
-      volumes:
-        - mariadb:/var/lib/mysql
-      networks:
-        - inception
-      env_file:
-        - .env
-      healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "--silent"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
+    restart: always
+    volumes:
+      - /Users/cedricbouwen/Documents/C19/Inception/data/mariadb:/var/lib/mysql
+    networks:
+      - inception
+    env_file:
+      - .env
+#    healthcheck:
+ #     test: ["CMD", "mysqladmin", "ping", "--silent"]
+  #    interval: 30s
+   #   timeout: 10s
+    #  retries: 5
