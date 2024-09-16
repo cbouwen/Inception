@@ -5,14 +5,14 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-      device: /nfs/homes/cbouwen/Course/Github/Inception/data/wordpress
+      device: /home/cbouwen/Course/Inception/data/wordpress
       o: bind
       type: none
   mariadb:
     name: mariadb
     driver: local
     driver_opts:
-      device: /nfs/homes/cbouwen/Course/Github/Inception/data/mariadb
+      device: /home/cbouwen/Course/Inception/data/mariadb
       o: bind
       type: none
 
