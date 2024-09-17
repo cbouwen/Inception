@@ -5,7 +5,7 @@ service mysql start
 while ! mysqladmin ping --silent; do
     sleep 1
 done
-    sleep 1
+    sleep 5
 
 echo "CREATE DATABASE IF NOT EXISTS ${DB_NAME} ;" > db.sql
 echo "CREATE USER IF NOT EXISTS '${ADM_USER}'@'%' IDENTIFIED BY '${ADM_PASS}' ;" >> db.sql
@@ -15,7 +15,6 @@ echo "FLUSH PRIVILEGES ;" >> db.sql
 
 mysql < db.sql
 
-#kill $(cat /var/run/mysqld/mysqld.pid)
-kill $(cat /Users/cedricbouwen/Documents/C19/Inception/data/mariadb:/var/lib/mysql)
+kill $(cat /var/run/mysqld/mysqld.pid)
 
 mysqld 
